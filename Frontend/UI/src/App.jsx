@@ -45,7 +45,6 @@ function App() {
 
             <div className="container-fluid">
               <div className="row">
-                Both socks and space rockets 🚀 will take you to new heights, but only one will get cold feet!
                 <Routes>
                   <Route exact path="/" element={
                     <section id="charactersList">
