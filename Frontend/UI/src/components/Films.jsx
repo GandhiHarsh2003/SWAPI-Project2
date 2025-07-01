@@ -58,7 +58,7 @@ export function Films() {
     if (!data) return "Loading..."
 
     return (
-        <div>
+        <main>
             <h1 id="title">{data.title}</h1>
             <section id="generalInfo">
                 <p>Episode: <span id="episode_id">{data.episode_id}</span></p>
@@ -72,24 +72,40 @@ export function Films() {
             </section>
             <section id="characters">
                 <h2>Characters in this film</h2>
-                {
-                    characterInFilm?.map((data) => (
-                        <ul onClick={() => {
-                            navigate("/characters/" + data.id)
-                        }}>{data.name}</ul>
-                    ))
-                }
+                <ul>
+                    {characterInFilm?.map((data) => (
+                        <li key={data.id}>
+                            <a
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    navigate("/characters/" + data.id);
+                                }}
+                                href="#"
+                            >
+                                {data.name}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
             </section>
             <section id="planets">
                 <h2>Planets in this film</h2>
-                {
-                    planetInFilm?.map((data) => (
-                        <ul onClick={() => {
-                            navigate("/planets/" + data.id)
-                        }}>{data.name}</ul>
-                    ))
-                }
+                <ul>
+                    {planetInFilm?.map((data) => (
+                        <li key={data.id}>
+                            <a
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    navigate("/planets/" + data.id);
+                                }}
+                                href="#"
+                            >
+                                {data.name}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
             </section>
-        </div>
+        </main>
     )
 }

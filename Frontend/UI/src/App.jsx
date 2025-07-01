@@ -48,16 +48,18 @@ function App() {
                 Both socks and space rockets 🚀 will take you to new heights, but only one will get cold feet!
                 <Routes>
                   <Route exact path="/" element={
-                    characterData.map((data) => (
-                      <Home key={data._id} data={data} />
-                    ))
+                    <section id="charactersList">
+                      {characterData.map((data) => (
+                        <Home key={data._id} data={data} />
+                      ))}
+                    </section>
                   } />
+
                   <Route path="/characters/:id" element={
                     <Character />
                   } />
                   <Route path="/films/:id" element={
                     <Films />
-
                   } />
                   <Route path="/planets/:id" element={
                     <Planet />

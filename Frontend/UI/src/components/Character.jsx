@@ -58,37 +58,48 @@ export function Character() {
     if (!data) return "Loading..."
 
     return (
-        <div>
+        <main>
             <h1 id="name">{data.name}</h1>
             <section id="generalInfo">
-                <p>Height: <span>{data.height}</span> cm</p>
-                <p>Mass: <span>{data.mass}</span> kg</p>
-                <p>Born: <span>{data.birth_year}</span></p>
+                <p>Height: <span id="height">{data.height}</span> cm</p>
+                <p>Mass: <span id="mass">{data.mass}</span> kg</p>
+                <p>Born: <span id="birth_year">{data.birth_year}</span></p>
             </section>
             <section id="planets">
                 <h2>Homeworld</h2>
-                <ul >
-                    {
-                        planetOfCharacter?.map((data) => (
-                            <ul onClick={() => {
-                                navigate("/planets/" + data.id)
-                            }}>{data.name}</ul>
-                        ))
-                    }
-                </ul>
+                <p>
+                    {planetOfCharacter?.map((data) => (
+                        <a
+                            key={data.id}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                navigate("/planets/" + data.id);
+                            }}
+                            href="#"
+                        >
+                            {data.name}
+                        </a>
+                    ))}
+                </p>
             </section>
             <section id="films">
                 <h2>Films appeared in</h2>
-                <ul >
-                    {
-                        filmInCharacter?.map((data) => (
-                            <ul onClick={() => {
-                                navigate("/films/" + data.id)
-                            }}>{data.title}</ul>
-                        ))
-                    }
+                <ul>
+                    {filmInCharacter?.map((data) => (
+                        <li key={data.id}>
+                            <a
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    navigate("/films/" + data.id);
+                                }}
+                                href="#"
+                            >
+                                {data.title}
+                            </a>
+                        </li>
+                    ))}
                 </ul>
             </section>
-        </div>
+        </main>
     )
 }
